@@ -1,0 +1,40 @@
+<div class="container-fluid">
+
+  <h1>WinZza</h1>
+  <p>Please let us know what you think!</p>
+
+
+
+  <label>Do you like our food?</label>
+  <div class="dropdown">
+    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Do you like our food?
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+  <hr />
+
+  <label>Where did you hear about us?</label>
+  <ul class="list-group">
+    <li class="list-group-item" [class.active]="active === i" (click)="onClick(i)" *ngFor="let s of sourceGroup; let i = index;">
+      {{ s }}
+      <i class="fa fa-chevron-right"></i>
+    </li>
+  </ul>
+
+  <hr />
+
+  <ul class="list-group">
+    <li class="list-group-item" [class.active]="active === i" (click)="onClick(i)" *ngFor="let q of questions; let i = index;">
+      {{ q }}
+      <i class="fa fa-chevron-right"></i>
+    </li>
+  </ul>
+
+
+</div>
+
