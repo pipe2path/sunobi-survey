@@ -4,7 +4,7 @@ export class QuestionModel {
   private internalId: string;
   private id: number;
   private desc: string;
-  private choices: [ChoiceModel];
+  private choices: string[];
 
   constructor(internalId, id, desc, choices) {
     this.internalId = internalId;

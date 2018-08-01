@@ -6,7 +6,7 @@ export class QuestionsService {
 
   constructor(private http: HttpClient) { }
 
-  configUrl = 'assets/config.json';
+  configUrl = 'http://localhost:44301/api/surveyquestions';
 
   getQuestionsByEntity(entityId: number) {
     var questions = this.http.get(this.configUrl);
