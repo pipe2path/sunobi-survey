@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { QuestionsService } from './questions.service';
-import { QuestionModel } from './QuestionModel';
+import { Question } from './QuestionModel';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ import { QuestionModel } from './QuestionModel';
 })
 
 export class HomeComponent {
-  questions: QuestionModel[];
+  questions: Question[];
   error: any;
 
   constructor(private questionsService: QuestionsService) {
@@ -22,7 +22,7 @@ export class HomeComponent {
 
   getQuestions(): void {
     this.questionsService.getQuestionsByEntity(1)
-      .subscribe(questions => this.questions);
+      .subscribe(questions => this.questions = questions);
   }
 
   sourceGroup = ["Yelp Search", "Our Flyer", "From a colleague", "Online banner"];  

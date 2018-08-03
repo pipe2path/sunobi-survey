@@ -1,15 +1,19 @@
 import { ChoiceModel } from './ChoiceModel';
 
-export class QuestionModel {
-  private internalId: string;
-  private id: number;
-  private desc: string;
-  private choices: string[];
+export class Question {
+  internalId: string;
+  entityId: number;
+  questionId: number;
+  questionDesc: string;
+  questionType: string;
+  choices: string[];
 
-  constructor(internalId, id, desc, choices) {
+  constructor(internalId, entityId, questionId, questionDesc, questionType, choices) {
     this.internalId = internalId;
-    this.id = id;
-    this.desc = desc;
+    this.entityId = entityId;
+    this.questionId = questionId;
+    this.questionDesc = questionDesc;
+    this.questionType = questionType;
     this.choices = choices;
   }
 
