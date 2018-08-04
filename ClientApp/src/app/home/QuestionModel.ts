@@ -7,6 +7,7 @@ export class Question {
   questionDesc: string;
   questionType: string;
   choices: string[];
+  activeChoice: number;
 
   constructor(internalId, entityId, questionId, questionDesc, questionType, choices) {
     this.internalId = internalId;
@@ -15,6 +16,7 @@ export class Question {
     this.questionDesc = questionDesc;
     this.questionType = questionType;
     this.choices = choices;
+    this.activeChoice = -1;
   }
 
 }
