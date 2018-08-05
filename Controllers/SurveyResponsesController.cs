@@ -33,7 +33,7 @@ namespace survey.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SurveyResponse response)
+        public IActionResult Create([FromBody] SurveyResponse response)
         {
             try
             {
