@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { QuestionsService } from './questions.service';
 import { Question } from './QuestionModel';
 import { Response } from './ResponseModel';
+import { HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  })
+};
 
 @Component({
   selector: 'app-home',
@@ -11,7 +18,8 @@ import { Response } from './ResponseModel';
 })
 
 export class HomeComponent {
-  questions: Question[];
+  //questions: Question[];  -- to be enabled when using mock questions
+  public questions;
   error: any;
   responses: Response[] = [];
 
@@ -19,37 +27,42 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.getQuestions();
+    this.getQuestionsWeb();
   }
 
-  getQuestions(): void {
-    this.questionsService.getQuestionsByEntity(1)
+  getQuestionsMock(): void {
+    this.questionsService.getQuestionsByEntityMock(1)
       .subscribe(questions => this.questions = questions);
   }
 
-  sourceGroup = ["Yelp Search", "Our Flyer", "From a colleague", "Online banner"];  
+  getQuestionsWeb(): void {
+    this.questionsService.getQuestionsByEntity(1).subscribe(
+      data => { this.questions = data },
+      err => console.error(err),
+      () => console.log('done loading questions')
+    );
+  }
 
-  addResponse(questionId, choiceId): void {
+  //sourceGroup = ["Yelp Search", "Our Flyer", "From a colleague", "Online banner"];  
+
+  addResponse(entityId, questionId, choiceId): void {
     for (var i = 0; i < this.responses.length; i++) {
         if (this.responses[i].questionId == questionId) {
           this.responses.splice(i, 1);
         }
     }
-    this.responses.push(new Response(questionId, choiceId));
+    this.responses.push(new Response(entityId, questionId, choiceId));
   }
 
 
   active: number;
   onClick(questionIndex: number, choiceIndex: number) {
-
-    this.addResponse(questionIndex, choiceIndex);
-    
-    //this.responses.push(new Response(questionIndex, choiceIndex))
-
+    this.addResponse(1, questionIndex, choiceIndex);        // entityId is hard code, need to change later
     this.questions[questionIndex].activeChoice = choiceIndex;
+  }
 
-
-
+  saveResponse(): void {
+      
   }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using survey.Data;
 using survey.Interfaces;
 using survey.Model;
 
@@ -13,7 +14,7 @@ namespace survey.Controllers
     public class SurveyQuestionsController : Controller
     {
         public ISurveyQuestionRepository _surveyQuestionsRepository;
-
+        
         public SurveyQuestionsController(ISurveyQuestionRepository surveyQuestionsRepository)
         {
             _surveyQuestionsRepository = surveyQuestionsRepository;

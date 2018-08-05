@@ -42,6 +42,7 @@ namespace survey
             });
 
             services.AddTransient<ISurveyQuestionRepository, SurveyQuestionRepository>();
+            services.AddTransient<ISurveyResponseRepository, SurveyResponseRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

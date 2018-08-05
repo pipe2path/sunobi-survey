@@ -10,11 +10,15 @@ export class QuestionsService {
 
   constructor(private http: HttpClient) { }
 
-  configUrl = 'http://localhost:44301/api/surveyquestions';
+  configUrl = 'http://localhost:28094/api/surveyquestions';
 
-  getQuestionsByEntity(entityId: number): Observable<Question[]> {
-    //var questions = this.http.get(this.configUrl);
+  getQuestionsByEntityMock(entityId: number): Observable<Question[]> {
     var questions = of(QUESTIONS);
+    return questions;
+  }
+
+  getQuestionsByEntity(entityId: number) {
+    var questions = this.http.get(this.configUrl);
     return questions;
   }
 }
