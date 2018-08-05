@@ -26,18 +26,19 @@ namespace survey.Controllers
             return await _surveyResponseRepository.GetResponses();
         }
 
-        [HttpGet("{id}")]
-        public async Task<SurveyResponse> GetResponseById(int id)
+        [HttpGet("{id}", Name = "GetById")]
+        public async Task<SurveyResponse> GetById(int id)
         {
             return await _surveyResponseRepository.GetResponseById(id);
         }
 
         [HttpPost]
-        public async Task AddResponse(SurveyResponse response)
+        public IActionResult Create(SurveyResponse response)
         {
             try
             {
-                await _surveyResponseRepository.AddResponse(response);
+                _surveyResponseRepository.AddResponse(response);
+                return CreatedAtRoute("GetById", new { id = response.responseId }, response);
             }
             catch (Exception ex)
             {
