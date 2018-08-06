@@ -18,8 +18,8 @@ export class QuestionsService {
 
   constructor(private http: HttpClient) { }
 
-  getQuestionsUrl = 'http://localhost:28094/api/surveyquestions';
-  postResponseUrl = 'http://localhost:28094/api/surveyresponses';
+  getQuestionsUrl = 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api/surveyquestions';
+  postResponseUrl = 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api/surveyresponses';
 
   getQuestionsByEntityMock(entityId: number): Observable<Question[]> {
     var questions = of(QUESTIONS);

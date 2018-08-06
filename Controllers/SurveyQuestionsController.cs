@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using survey.Data;
 using survey.Interfaces;
@@ -11,6 +12,7 @@ namespace survey.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [EnableCors("AllowSpecificOrigin")]
     public class SurveyQuestionsController : Controller
     {
         public ISurveyQuestionRepository _surveyQuestionsRepository;
