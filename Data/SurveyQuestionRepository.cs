@@ -29,8 +29,7 @@ namespace survey.Data
                 throw ex;
             }
         }
-
-
+        
         public async Task<SurveyQuestion> GetQuestionById(int id)
         {
             return await _context.SurveyQuestions.Find(q => q.questionId == id).FirstOrDefaultAsync();

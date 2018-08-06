@@ -18,5 +18,6 @@ namespace survey.Model
         public string questionDesc { get; set; }
         public string questionType { get; set; }
         public string[] choices { get; set; }
+        public int activeChoice { get; set; }
     }
 }

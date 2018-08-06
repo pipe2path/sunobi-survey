@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using survey.Data;
 using survey.Interfaces;
@@ -10,7 +11,8 @@ using survey.Model;
 namespace survey.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/surveyresponses")]
+    [EnableCors("AllowSpecificOrigin")]
     public class SurveyResponsesController : Controller
     {
         public ISurveyResponseRepository _surveyResponseRepository;
@@ -33,11 +35,12 @@ namespace survey.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] SurveyResponse response)
+        [Route("api/surveyresponses/Create")]
+        public async Task<IActionResult> Create([FromBody] SurveyResponse response)
         {
             try
             {
-                _surveyResponseRepository.AddResponse(response);
+                await _surveyResponseRepository.AddResponse(response);
                 return CreatedAtRoute("GetById", new { id = response.responseId }, response);
             }
             catch (Exception ex)
