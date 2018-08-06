@@ -21,7 +21,7 @@ export class HomeComponent {
   //questions: Question[];  -- to be enabled when using mock questions
   public questions;
   error: any;
-  responses: Response[] = [];
+  public responses: Response[] = [];
 
   constructor(private questionsService: QuestionsService) {
   }
@@ -53,16 +53,19 @@ export class HomeComponent {
     }
     this.responses.push(new Response(entityId, questionId, choiceId));
   }
-
-
+  
   active: number;
   onClick(questionIndex: number, choiceIndex: number) {
     this.addResponse(1, questionIndex, choiceIndex);        // entityId is hard code, need to change later
     this.questions[questionIndex].activeChoice = choiceIndex;
   }
 
-  saveResponse(): void {
-      
+  onSave() {
+    for (var i = 0; i < this.responses.length; i++) {
+      var r = this.responses[i];
+      this.questionsService.saveResponse(r);
+    }
+    
   }
 
 }
