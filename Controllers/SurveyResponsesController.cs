@@ -11,8 +11,7 @@ using survey.Model;
 namespace survey.Controllers
 {
     [Produces("application/json")]
-    [Route("api/surveyresponses")]
-    [EnableCors("AllowSpecificOrigin")]
+    [Route("api/[Controller]")]
     public class SurveyResponsesController : Controller
     {
         public ISurveyResponseRepository _surveyResponseRepository;
@@ -35,7 +34,7 @@ namespace survey.Controllers
         }
 
         [HttpPost]
-        [Route("api/surveyresponses/Create")]
+        //[Route("api/surveyresponses/Create")]
         public async Task<IActionResult> Create([FromBody] SurveyResponse response)
         {
             try
@@ -48,6 +47,14 @@ namespace survey.Controllers
                 throw ex;
             }
         }
-        
+
+        #region Test
+        //[HttpPost]
+        //public IActionResult Create([FromBody] SurveyResponse item)
+        //{
+        //    return Ok(new { message = "Response reached" });
+        //}
+        #endregion
+
     }
 }

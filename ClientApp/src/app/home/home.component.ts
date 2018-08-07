@@ -56,14 +56,15 @@ export class HomeComponent {
   
   active: number;
   onClick(questionIndex: number, choiceIndex: number) {
-    this.addResponse(1, questionIndex, choiceIndex);        // entityId is hard code, need to change later
+    this.addResponse(1, questionIndex, choiceIndex);        // entityId is hard coded, need to change later
     this.questions[questionIndex].activeChoice = choiceIndex;
   }
 
   onSave() {
     for (var i = 0; i < this.responses.length; i++) {
       var r = this.responses[i];
-      this.questionsService.saveResponse(r);
+      this.questionsService.saveResponse(r).subscribe(
+        data => this.responses = data);
     }
     
   }

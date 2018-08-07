@@ -8,6 +8,12 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { environment } from '../../environments/environment';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
+
 @Injectable()
 export class QuestionsService {
 
@@ -17,7 +23,7 @@ export class QuestionsService {
   //getQuestionsUrl = 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api/surveyquestions';
   //postResponseUrl = 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api/surveyresponses';
   getQuestionsUrl = environment.apiUrl + "/surveyquestions";
-  postResponseUrl = environment.apiUrl + "/surveyresponses/Create";
+  postResponseUrl = environment.apiUrl + "/surveyresponses";
 
   getQuestionsByEntityMock(entityId: number): Observable<Question[]> {
     var questions = of(QUESTIONS);
@@ -29,19 +35,24 @@ export class QuestionsService {
     return questions;
   }
   
-  saveResponse(response: Response): Observable<boolean> {
-
-    let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json'
-    })
-
-    let options = {
-      headers: httpHeaders
-    };
-
+  saveResponse(response: Response): Observable<any> {
     const body = JSON.stringify(response);
+    return this.http.post(this.postResponseUrl, body, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
 
-    return this.http.post<boolean>(this.postResponseUrl, body, options);
-      
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return 'Something bad happened; please try again later.';
   }
 }
