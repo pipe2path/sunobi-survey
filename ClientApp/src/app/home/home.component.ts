@@ -60,6 +60,21 @@ export class HomeComponent {
     this.questions[questionIndex].activeChoice = choiceIndex;
   }
 
+  name = '';
+  getName(value: string) {
+    this.name = value;
+  }
+
+  phone = '';
+  getPhone(value: string) {
+    this.phone = value;
+  }
+
+  email = '';
+  getEmail(value: string) {
+    this.email = value;
+  }
+  
   onSave() {
     for (var i = 0; i < this.responses.length; i++) {
       var r = this.responses[i];
