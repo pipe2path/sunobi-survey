@@ -34,27 +34,19 @@ namespace survey.Controllers
         }
 
         [HttpPost]
-        //[Route("api/surveyresponses/Create")]
         public async Task<IActionResult> Create([FromBody] SurveyResponse response)
         {
             try
             {
                 await _surveyResponseRepository.AddResponse(response);
-                return CreatedAtRoute("GetById", new { id = response.responseId }, response);
+                var url = Url.Action(" ", "surveyquestions");                       // return a blank questionnaire
+                return Content(url);
+                //return CreatedAtRoute("GetById", new { id = response.responseId }, response);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        #region Test
-        //[HttpPost]
-        //public IActionResult Create([FromBody] SurveyResponse item)
-        //{
-        //    return Ok(new { message = "Response reached" });
-        //}
-        #endregion
-
     }
 }

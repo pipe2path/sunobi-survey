@@ -14,6 +14,7 @@ namespace survey.Model
         public ObjectId InternalId { get; set; }
                 
         public int entityId { get; set; }
+        public int surveyId { get; set; }
         public int questionId { get; set; }
         public string questionDesc { get; set; }
         public string questionType { get; set; }

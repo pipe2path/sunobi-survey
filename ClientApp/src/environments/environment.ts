@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   //apiUrl: 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api'
-  apiUrl: "http://localhost:49732/api"
+  apiUrl: "http://localhost:28094/api"
 };
