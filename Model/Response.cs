@@ -18,7 +18,7 @@ namespace survey.Model
             get { return internalId.ToString(); }
             set { responseId = value; }
         }
-        public int entityId { get; set; }
+        public int surveyId { get; set; }
         public int questionId { get; set; }
         public int choiceId { get; set; }
     }

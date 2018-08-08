@@ -30,7 +30,6 @@ namespace survey.Data
             }
         }
 
-
         public async Task<Response> GetResponseById(string id)
         {
             return await _context.Responses.Find(r => r.responseId == id).FirstOrDefaultAsync();

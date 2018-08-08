@@ -22,6 +22,7 @@ export class HomeComponent {
   public questions;
   error: any;
   public responses: Response[] = [];
+  public imageSrc = '../assets/headerLogo2.png';
 
   constructor(private questionsService: QuestionsService) {
   }

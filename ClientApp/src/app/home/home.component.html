@@ -1,7 +1,20 @@
+
+<style>
+  .img-div {
+    background-size: cover;
+  }
+</style>
+
 <div class="container-fluid">
 
-  <h1>WinZza</h1>
-  <h4>We are listening!</h4>
+  
+    <!--<h1>WinZza</h1>
+  <h4>We are listening!</h4>-->
+    <div class="img-container">
+      <img [src]="imageSrc"/>
+    </div>
+    <!--<div [ngStyle]="{'background-image': 'url(' + imageSrc + ')'}"></div>-->
+  
   <br />
   <div *ngFor="let q of questions; let i = index;">
     <h5>{{ q.questionDesc }}</h5>
