@@ -6,13 +6,13 @@ using survey.Model;
 
 namespace survey.Interfaces
 {
-    public interface ISurveyResponseRepository
+    public interface IResponseRepository
     {
-        Task<IEnumerable<SurveyResponse>> GetResponses();
-        Task<SurveyResponse> GetResponseById(int id);
+        Task<IEnumerable<Response>> GetResponses();
+        Task<Response> GetResponseById(string id);
 
         // add new response document
-        Task AddResponse(SurveyResponse item);
+        Task AddResponse(Response item);
 
         
     }

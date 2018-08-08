@@ -6,23 +6,24 @@ using survey.Model;
 using survey.Interfaces;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 
 namespace survey.Data
 {
-    public class SurveyQuestionRepository : ISurveyQuestionRepository
+    public class QuestionRepository : IQuestionRepository
     {
         private readonly DatabaseContext _context = null;
 
-        public SurveyQuestionRepository(IOptions<Settings> settings)
+        public QuestionRepository(IOptions<Settings> settings)
         {
             _context = new DatabaseContext(settings);
         }
 
-        public async Task<IEnumerable<SurveyQuestion>> GetQuestions()
+        public async Task<IEnumerable<Question>> GetQuestions()
         {
             try
             {
-                return await _context.SurveyQuestions.Find(_ => true).ToListAsync();
+                return await _context.Questions.Find(_ => true).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -30,9 +31,9 @@ namespace survey.Data
             }
         }
         
-        public async Task<SurveyQuestion> GetQuestionById(int id)
+        public async Task<Question> GetQuestionById(int id)
         {
-            return await _context.SurveyQuestions.Find(q => q.questionId == id).FirstOrDefaultAsync();
+            return await _context.Questions.Find(q => q.questionId == id).FirstOrDefaultAsync();
         }
 
     }

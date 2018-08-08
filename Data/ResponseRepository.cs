@@ -9,20 +9,20 @@ using Microsoft.Extensions.Options;
 
 namespace survey.Data
 {
-    public class SurveyResponseRepository : ISurveyResponseRepository
+    public class ResponseRepository : IResponseRepository
     {
         private readonly DatabaseContext _context = null;
 
-        public SurveyResponseRepository(IOptions<Settings> settings)
+        public ResponseRepository(IOptions<Settings> settings)
         {
             _context = new DatabaseContext(settings);
         }
 
-        public async Task<IEnumerable<SurveyResponse>> GetResponses()
+        public async Task<IEnumerable<Response>> GetResponses()
         {
             try
             {
-                return await _context.SurveyResponses.Find(_ => true).ToListAsync();
+                return await _context.Responses.Find(_ => true).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -31,16 +31,16 @@ namespace survey.Data
         }
 
 
-        public async Task<SurveyResponse> GetResponseById(int id)
+        public async Task<Response> GetResponseById(string id)
         {
-            return await _context.SurveyResponses.Find(r => r.responseId == id).FirstOrDefaultAsync();
+            return await _context.Responses.Find(r => r.responseId == id).FirstOrDefaultAsync();
         }
 
-        public async Task AddResponse(SurveyResponse item)
+        public async Task AddResponse(Response item)
         {
             try
             {
-                await _context.SurveyResponses.InsertOneAsync(item);
+                await _context.Responses.InsertOneAsync(item);
             }
             catch (Exception ex)
             {

@@ -22,8 +22,8 @@ export class QuestionsService {
 
   //getQuestionsUrl = 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api/surveyquestions';
   //postResponseUrl = 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api/surveyresponses';
-  getQuestionsUrl = environment.apiUrl + "/surveyquestions";
-  postResponseUrl = environment.apiUrl + "/surveyresponses";
+  getQuestionsUrl = environment.apiUrl + "/questions";
+  postResponseUrl = environment.apiUrl + "/responses";
 
   getQuestionsByEntityMock(entityId: number): Observable<Question[]> {
     var questions = of(QUESTIONS);

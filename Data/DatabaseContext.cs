@@ -28,18 +28,18 @@ namespace survey.Data
                 _database = client.GetDatabase(settings.Value.Database);
         }
 
-        public IMongoCollection<SurveyQuestion> SurveyQuestions
+        public IMongoCollection<Question> Questions
         {
             get
             {
-                return _database.GetCollection<SurveyQuestion>("surveyQuestions");
+                return _database.GetCollection<Question>("surveyQuestions");
             }
         }
-        public IMongoCollection<SurveyResponse> SurveyResponses
+        public IMongoCollection<Response> Responses
         {
             get
             {
-                return _database.GetCollection<SurveyResponse>("surveyResponses");
+                return _database.GetCollection<Response>("surveyResponses");
             }
         }
 

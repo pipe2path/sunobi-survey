@@ -12,36 +12,35 @@ namespace survey.Controllers
 {
     [Produces("application/json")]
     [Route("api/[Controller]")]
-    public class SurveyResponsesController : Controller
+    public class ResponsesController : Controller
     {
-        public ISurveyResponseRepository _surveyResponseRepository;
+        public IResponseRepository _surveyResponseRepository;
 
-        public SurveyResponsesController(ISurveyResponseRepository surveyResponseRepository)
+        public ResponsesController(IResponseRepository surveyResponseRepository)
         {
             _surveyResponseRepository = surveyResponseRepository;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<SurveyResponse>> Get()
+        public async Task<IEnumerable<Response>> Get()
         {
             return await _surveyResponseRepository.GetResponses();
         }
 
         [HttpGet("{id}", Name = "GetById")]
-        public async Task<SurveyResponse> GetById(int id)
+        public async Task<Response> GetById(string id)
         {
             return await _surveyResponseRepository.GetResponseById(id);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] SurveyResponse response)
+        public async Task<IActionResult> Create([FromBody] Response response)
         {
             try
             {
                 await _surveyResponseRepository.AddResponse(response);
                 var url = Url.Action(" ", "surveyquestions");                       // return a blank questionnaire
                 return Content(url);
-                //return CreatedAtRoute("GetById", new { id = response.responseId }, response);
             }
             catch (Exception ex)
             {

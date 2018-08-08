@@ -41,8 +41,8 @@ namespace survey
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddTransient<ISurveyQuestionRepository, SurveyQuestionRepository>();
-            services.AddTransient<ISurveyResponseRepository, SurveyResponseRepository>();
+            services.AddTransient<IQuestionRepository, QuestionRepository>();
+            services.AddTransient<IResponseRepository, ResponseRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

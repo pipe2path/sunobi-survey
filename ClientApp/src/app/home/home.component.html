@@ -1,28 +1,29 @@
 <div class="container-fluid">
 
   <h1>WinZza</h1>
-  <h3>We're listening!</h3>
+  <h4>We are listening!</h4>
   <br />
-  <br />
-
   <div *ngFor="let q of questions; let i = index;">
-    <label>{{ q.questionDesc }}</label>
+    <h5>{{ q.questionDesc }}</h5>
     <ul class="list-group">
       <li class="list-group-item list-group-item-action" [class.active]="questions[i].activeChoice === j" (click)="onClick(i,j)" *ngFor="let c of q.choices; let j = index;">
         {{ c }}
         <i class="fa fa-chevron-right"></i>
       </li>
     </ul>
-    <hr />
+    <h3>&nbsp;</h3>
   </div>
-  <label>Please enter your information</label>
-  <input class="form-control" placeholder="Name" #box1 (keyup.enter)="getName(box1.value)" (blur)="getName(box1.value)">
-  <hr />
-  <input class="form-control" placeholder="Phone" #box2 (keyup.enter)="getPhone(box2.value)" (blur)="getPhone(box2.value)">
-  <hr />
-  <input class="form-control" placeholder="Email" #box3 (keyup.enter)="getEmail(box3.value)" (blur)="getEmail(box3.value)">
-  <hr />
-  <input type="button" [disabled]="responses.length === 0" class="btn btn-primary" value="Submit" (click)="onSave()" />
-  <hr />
+  
+  <div>
+    <h4>Please enter your information</h4>
+    <input class="form-control" placeholder="Name" #box1 (keyup.enter)="getName(box1.value)" (blur)="getName(box1.value)">
+    <br />
+    <input class="form-control" placeholder="Phone" #box2 (keyup.enter)="getPhone(box2.value)" (blur)="getPhone(box2.value)">
+    <br />
+    <input class="form-control" placeholder="Email" #box3 (keyup.enter)="getEmail(box3.value)" (blur)="getEmail(box3.value)">
+    <br />
+    <input type="button" [disabled]="responses.length === 0" class="btn btn-primary" value="Submit" (click)="onSave()" />
+    <h3>&nbsp;</h3>
+  </div>
 </div>
 

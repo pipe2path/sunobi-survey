@@ -6,9 +6,9 @@ using survey.Model;
 
 namespace survey.Interfaces
 {
-    public interface ISurveyQuestionRepository
+    public interface IQuestionRepository
     {
-        Task<IEnumerable<SurveyQuestion>> GetQuestions();
-        Task<SurveyQuestion> GetQuestionById(int id);
+        Task<IEnumerable<Question>> GetQuestions();
+        Task<Question> GetQuestionById(int id);
     }
 }
