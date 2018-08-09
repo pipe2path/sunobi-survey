@@ -46,13 +46,13 @@ export class HomeComponent {
 
   //sourceGroup = ["Yelp Search", "Our Flyer", "From a colleague", "Online banner"];  
 
-  addResponse(entityId, questionId, choiceId): void {
+  addResponse(surveyId, questionId, choiceId): void {
     for (var i = 0; i < this.responses.length; i++) {
         if (this.responses[i].questionId == questionId) {
           this.responses.splice(i, 1);
         }
     }
-    this.responses.push(new Response(entityId, questionId, choiceId));
+    this.responses.push(new Response(surveyId, questionId, choiceId));
   }
   
   active: number;
@@ -79,7 +79,7 @@ export class HomeComponent {
   onSave() {
     for (var i = 0; i < this.responses.length; i++) {
       var r = this.responses[i];
-      this.questionsService.saveResponse(r).subscribe(
+      this.questionsService.saveResponse(r, this.name, this.phone, this.email).subscribe(
         data => this.responses = data);
     }
     

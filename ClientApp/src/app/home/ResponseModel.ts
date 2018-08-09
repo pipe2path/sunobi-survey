@@ -1,10 +1,10 @@
 export class Response {
-  public entityId: number;
+  public surveyId: number;
   public questionId: number;
   private choiceId: number;
 
-  constructor(entityId, questionId, choiceId) {
-    this.entityId = entityId;
+  constructor(surveyId, questionId, choiceId) {
+    this.surveyId = surveyId;
     this.questionId = questionId;
     this.choiceId = choiceId;
   }

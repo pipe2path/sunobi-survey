@@ -35,7 +35,7 @@ export class QuestionsService {
     return questions;
   }
   
-  saveResponse(response: Response): Observable<any> {
+  saveResponse(response: Response, name: string, phone: string, email: string): Observable<any> {
     const body = JSON.stringify(response);
     return this.http.post(this.postResponseUrl, body, httpOptions)
       .pipe(catchError(this.handleError));

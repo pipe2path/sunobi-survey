@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Response = /** @class */ (function () {
-    function Response(entityId, questionId, choiceId) {
-        this.entityId = entityId;
+    function Response(surveyId, questionId, choiceId) {
+        this.surveyId = surveyId;
         this.questionId = questionId;
         this.choiceId = choiceId;
     }
