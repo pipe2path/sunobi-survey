@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using survey.Data;
 using survey.Interfaces;
 using survey.Model;
+using Newtonsoft.Json.Linq;
 
 namespace survey.Controllers
 {
@@ -27,19 +28,42 @@ namespace survey.Controllers
             return await _surveyResponseRepository.GetResponses();
         }
 
-        [HttpGet("{id}", Name = "GetById")]
-        public async Task<Response> GetById(string id)
-        {
-            return await _surveyResponseRepository.GetResponseById(id);
-        }
+        //[HttpGet("{id}", Name = "GetById")]
+        //public async Task<Response> GetById(string id)
+        //{
+        //    return await _surveyResponseRepository.GetResponseById(id);
+        //}
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Response response)
+        public IActionResult Create([FromBody] JsonPayload payload)
         {
             try
             {
-                await _surveyResponseRepository.AddResponse(response);
-                var url = Url.Action(" ", "surveyquestions");                       // return a blank questionnaire
+                if (payload != null && payload.responseDetails != null)
+                {
+
+                    // construct response and user objects
+                    var responseDetails = payload.responseDetails;
+                    foreach (var rd in responseDetails)
+                    {
+                        Response responseObj = new Response();
+                        responseObj.surveyId = rd.surveyId;
+                        responseObj.questionId = rd.questionId;
+                        responseObj.choiceId = rd.choiceId;
+
+                        _surveyResponseRepository.AddResponse(responseObj);
+                    }
+
+                    ResponseUser user = new ResponseUser();
+                    user.surveyId = payload.surveyId;
+                    user.userName = payload.userName;
+                    user.userPhone = payload.userPhone;
+                    user.userEmail = payload.userEmail;
+
+                    _surveyResponseRepository.AddResponseUser(user);
+
+                }
+                var url = Url.Action(" ", "surveyquestions");                       // return a new questionnaire
                 return Content(url);
             }
             catch (Exception ex)
@@ -47,5 +71,14 @@ namespace survey.Controllers
                 throw ex;
             }
         }
+    }
+
+    public class JsonPayload
+    {
+        public int surveyId { get; set; }
+        public string userName { get; set; }
+        public string userPhone { get; set; }
+        public string userEmail { get; set; }
+        public Response[] responseDetails { get;set;}
     }
 }

@@ -86,12 +86,10 @@ export class HomeComponent {
     
   //}
 
-  response = new Response(1, this.name, this.phone, this.email, this.responses);
-  
   onSubmit() {
-    this.questionsService.saveResponse(this.response).subscribe(
-      next(this.response) { console.log('response saved');}
+    var response = new Response(1, this.name, this.phone, this.email, this.responses);
+    this.questionsService.saveResponse(response).subscribe(
+      data => response = data)
   }
-
 
 }

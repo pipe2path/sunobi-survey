@@ -30,16 +30,29 @@ namespace survey.Data
             }
         }
 
-        public async Task<Response> GetResponseById(string id)
-        {
-            return await _context.Responses.Find(r => r.responseId == id).FirstOrDefaultAsync();
-        }
+        //public async Task<Response> GetResponseById(string id)
+        //{
+        //    return await _context.Responses.Find(r => r.responseId == id).FirstOrDefaultAsync();
+        //}
 
         public async Task AddResponse(Response item)
         {
             try
             {
                 await _context.Responses.InsertOneAsync(item);
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task AddResponseUser(ResponseUser user)
+        {
+            try
+            {
+                await _context.ResponseUsers.InsertOneAsync(user);
             }
             catch (Exception ex)
             {

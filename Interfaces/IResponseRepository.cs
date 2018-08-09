@@ -9,10 +9,11 @@ namespace survey.Interfaces
     public interface IResponseRepository
     {
         Task<IEnumerable<Response>> GetResponses();
-        Task<Response> GetResponseById(string id);
+        //Task<Response> GetResponseById(string id);
 
         // add new response document
         Task AddResponse(Response item);
+        Task AddResponseUser(ResponseUser user);
 
         
     }

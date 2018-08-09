@@ -41,10 +41,10 @@ export class QuestionsService {
   //    .pipe(catchError(this.handleError));
   //}
 
-  saveResponse(response: Response) {
+  saveResponse(response: Response): Observable<any> {
     const body = JSON.stringify(response);
     return this.http.post(this.postResponseUrl, body, httpOptions)
-        .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

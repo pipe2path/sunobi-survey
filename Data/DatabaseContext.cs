@@ -42,7 +42,13 @@ namespace survey.Data
                 return _database.GetCollection<Response>("surveyResponses");
             }
         }
-
+        public IMongoCollection<ResponseUser> ResponseUsers
+        {
+            get
+            {
+                return _database.GetCollection<ResponseUser>("responseUser");
+            }
+        }
 
     }
 }
