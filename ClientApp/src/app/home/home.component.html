@@ -35,7 +35,7 @@
     <br />
     <input class="form-control" placeholder="Email" #box3 (keyup.enter)="getEmail(box3.value)" (blur)="getEmail(box3.value)">
     <br />
-    <input type="button" [disabled]="responses.length === 0" class="btn btn-primary btn-lg" value="Submit" (click)="onSave()" />
+    <input type="button" [disabled]="responses.length === 0" class="btn btn-primary btn-lg" value="Submit" (click)="onSubmit()" />
     <h3>&nbsp;</h3>
   </div>
 </div>

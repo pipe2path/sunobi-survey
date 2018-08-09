@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Question } from './QuestionModel';
-import { Response } from './ResponseModel';
+import { Response } from './Response';
 import { QUESTIONS } from './mock-questions';
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
@@ -34,11 +34,17 @@ export class QuestionsService {
     var questions = this.http.get(this.getQuestionsUrl);
     return questions;
   }
-  
-  saveResponse(response: Response, name: string, phone: string, email: string): Observable<any> {
+
+  //saveResponse(response: Response, name: string, phone: string, email: string): Observable<any> {
+  //  const body = JSON.stringify(response);
+  //  return this.http.post(this.postResponseUrl, body, httpOptions)
+  //    .pipe(catchError(this.handleError));
+  //}
+
+  saveResponse(response: Response) {
     const body = JSON.stringify(response);
     return this.http.post(this.postResponseUrl, body, httpOptions)
-      .pipe(catchError(this.handleError));
+        .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

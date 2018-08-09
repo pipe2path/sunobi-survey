@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { QuestionsService } from './questions.service';
 import { Question } from './QuestionModel';
-import { Response } from './ResponseModel';
+import { ResponseDetail } from './ResponseDetail';
+import { Response } from './Response';
 import { HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
@@ -21,7 +22,7 @@ export class HomeComponent {
   //questions: Question[];  -- to be enabled when using mock questions
   public questions;
   error: any;
-  public responses: Response[] = [];
+  public responses: ResponseDetail[] = [];
   public imageSrc = '../assets/headerLogo2.png';
 
   constructor(private questionsService: QuestionsService) {
@@ -52,7 +53,7 @@ export class HomeComponent {
           this.responses.splice(i, 1);
         }
     }
-    this.responses.push(new Response(surveyId, questionId, choiceId));
+    this.responses.push(new ResponseDetail(surveyId, questionId, choiceId));
   }
   
   active: number;
@@ -76,13 +77,21 @@ export class HomeComponent {
     this.email = value;
   }
   
-  onSave() {
-    for (var i = 0; i < this.responses.length; i++) {
-      var r = this.responses[i];
-      this.questionsService.saveResponse(r, this.name, this.phone, this.email).subscribe(
-        data => this.responses = data);
-    }
+  //onSubmit() {
+  //  for (var i = 0; i < this.responses.length; i++) {
+  //    var r = this.responses[i];
+  //    this.questionsService.saveResponse(r, this.name, this.phone, this.email).subscribe(
+  //      data => this.responses = data);
+  //  }
     
+  //}
+
+  response = new Response(1, this.name, this.phone, this.email, this.responses);
+  
+  onSubmit() {
+    this.questionsService.saveResponse(this.response).subscribe(
+      next(this.response) { console.log('response saved');}
   }
+
 
 }

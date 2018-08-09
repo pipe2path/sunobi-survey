@@ -1,4 +1,4 @@
-export class Response {
+export class ResponseDetail {
   public surveyId: number;
   public questionId: number;
   private choiceId: number;
