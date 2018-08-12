@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api'
+  apiUrl: 'http://sunobi-survey-1.us-west-2.elasticbeanstalk.com/api'
 };
