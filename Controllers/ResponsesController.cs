@@ -35,12 +35,23 @@ namespace survey.Controllers
         //}
 
         [HttpPost]
-        public IActionResult Create([FromBody] JsonPayload payload)
+        public async Task Create([FromBody] JsonPayload payload)
         {
             try
             {
                 if (payload != null && payload.responseDetails != null)
                 {
+
+                    ResponseUser user = new ResponseUser();
+                    user.surveyId = payload.surveyId;
+                    user.userName = payload.userName;
+                    user.userPhone = payload.userPhone;
+                    user.userEmail = payload.userEmail;
+
+                    await _surveyResponseRepository.AddResponseUser(user);
+
+                    // get _id of inserted item
+                    var newUserId = user.internalId;
 
                     // construct response and user objects
                     var responseDetails = payload.responseDetails;
@@ -50,21 +61,11 @@ namespace survey.Controllers
                         responseObj.surveyId = rd.surveyId;
                         responseObj.questionId = rd.questionId;
                         responseObj.choiceId = rd.choiceId;
+                        responseObj.userId = newUserId;
 
-                        _surveyResponseRepository.AddResponse(responseObj);
+                        await _surveyResponseRepository.AddResponse(responseObj);
                     }
-
-                    ResponseUser user = new ResponseUser();
-                    user.surveyId = payload.surveyId;
-                    user.userName = payload.userName;
-                    user.userPhone = payload.userPhone;
-                    user.userEmail = payload.userEmail;
-
-                    _surveyResponseRepository.AddResponseUser(user);
-
                 }
-                var url = Url.Action(" ", "surveyquestions");                       // return a new questionnaire
-                return Content(url);
             }
             catch (Exception ex)
             {
