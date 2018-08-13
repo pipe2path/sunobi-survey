@@ -30,6 +30,9 @@ export class HomeComponent {
 
   ngOnInit() {
     this.getQuestionsWeb();
+    this.name = '';
+    this.phone = '';
+    this.email = '';
   }
 
   getQuestionsMock(): void {
@@ -90,6 +93,8 @@ export class HomeComponent {
     var response = new Response(1, this.name, this.phone, this.email, this.responses);
     this.questionsService.saveResponse(response).subscribe(
       data => response = data)
+
+    this.ngOnInit();
   }
 
 }
