@@ -51,7 +51,7 @@ namespace survey.Controllers
                     await _surveyResponseRepository.AddResponseUser(user);
 
                     // get _id of inserted item
-                    var id = user.internalId;
+                    var newUserId = user.internalId;
 
                     // construct response and user objects
                     var responseDetails = payload.responseDetails;
@@ -61,6 +61,7 @@ namespace survey.Controllers
                         responseObj.surveyId = rd.surveyId;
                         responseObj.questionId = rd.questionId;
                         responseObj.choiceId = rd.choiceId;
+                        responseObj.userId = newUserId;
 
                         await _surveyResponseRepository.AddResponse(responseObj);
                         
