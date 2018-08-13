@@ -32,12 +32,12 @@
   
   <div>
     <h4>Please enter your information</h4>
-    <input class="form-control" placeholder="Name" #box1 (keyup.enter)="getName(box1.value)" (blur)="getName(box1.value)">
+    <input class="form-control" placeholder="Name" #box1 (keyup.enter)="getName(box1.value)" [(ngModel)]="name" (blur)="getName(box1.value)">
     <br />
-    <input class="form-control" placeholder="Email" #box3 (keyup.enter)="getEmail(box3.value)" (blur)="getEmail(box3.value)">
+    <input class="form-control" placeholder="Email" #box3 (keyup.enter)="getEmail(box3.value)" [(ngModel)]="email" (blur)="getEmail(box3.value)">
     <br />
     <label>Enter phone number to receive 6 free wings!</label>
-    <input class="form-control" placeholder="Phone" #box2 (keyup.enter)="getPhone(box2.value)" (blur)="getPhone(box2.value)">
+    <input class="form-control" placeholder="Phone" #box2 (keyup.enter)="getPhone(box2.value)" [(ngModel)]="phone" (blur)="getPhone(box2.value)">
     <label class="optin">Message and data rates may apply</label>
     <div class="custom-control custom-checkbox optin">
       <input type="checkbox" class="custom-control-input" id="optIn" />

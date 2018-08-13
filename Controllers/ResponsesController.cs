@@ -64,13 +64,8 @@ namespace survey.Controllers
                         responseObj.userId = newUserId;
 
                         await _surveyResponseRepository.AddResponse(responseObj);
-                        
                     }
-
-                    
-
                 }
-                
             }
             catch (Exception ex)
             {
