@@ -30,6 +30,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\home\ResponseModel.ts" />
+    <None Remove="ClientApp\src\environments\environment.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\environments\environment.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

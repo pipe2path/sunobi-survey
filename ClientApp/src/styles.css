@@ -14,7 +14,8 @@
   font-size: small;
 }
 .offer {
-  color:blue;
+  color: darkorange;
+  font-weight: bold;
 }
 
 .input-group.is-invalid {
