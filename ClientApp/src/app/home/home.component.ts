@@ -80,15 +80,6 @@ export class HomeComponent {
     this.email = value;
   }
   
-  //onSubmit() {
-  //  for (var i = 0; i < this.responses.length; i++) {
-  //    var r = this.responses[i];
-  //    this.questionsService.saveResponse(r, this.name, this.phone, this.email).subscribe(
-  //      data => this.responses = data);
-  //  }
-    
-  //}
-
   onSubmit() {
     var response = new Response(1, this.name, this.phone, this.email, this.responses);
     this.questionsService.saveResponse(response).subscribe(
