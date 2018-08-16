@@ -1,29 +1,18 @@
 
 <style>
-  .img-div {
-    background-size: cover;
-  }
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-  .optin{
-    font-size: small;
-  }
+
 </style>
 
 <div class="container-fluid">
 
-  
-    <!--<h1>WinZza</h1>
+
+  <!--<h1>WinZza</h1>
   <h4>We are listening!</h4>-->
-    <div class="img-container">
-      <img [src]="imageSrc" class="center"/>
-    </div>
-    <!--<div [ngStyle]="{'background-image': 'url(' + imageSrc + ')'}"></div>-->
-  
+  <div class="img-container">
+    <img [src]="imageSrc" class="center" />
+  </div>
+  <!--<div [ngStyle]="{'background-image': 'url(' + imageSrc + ')'}"></div>-->
+
   <br />
   <div *ngFor="let q of questions; let i = index;">
     <h5>{{ q.questionDesc }}</h5>
@@ -35,23 +24,37 @@
     </ul>
     <h3>&nbsp;</h3>
   </div>
-  
+
   <div>
     <h4>Please enter your information</h4>
-    <input class="form-control" placeholder="Name" #box1 (keyup.enter)="getName(box1.value)" [(ngModel)]="name" (blur)="getName(box1.value)">
-    <br />
-    <input class="form-control" placeholder="Email" #box3 (keyup.enter)="getEmail(box3.value)" [(ngModel)]="email" (blur)="getEmail(box3.value)">
-    <br />
-    <label>Enter phone number to receive 6 free wings!</label>
-    <input class="form-control" placeholder="Phone" #box2 (keyup.enter)="getPhone(box2.value)" [(ngModel)]="phone" (blur)="getPhone(box2.value)">
-    <label class="optin">Message and data rates may apply</label>
-    <div class="custom-control custom-checkbox optin">
-      <input type="checkbox" class="custom-control-input" id="optIn" />
-      <label class="custom-control-label" for="optIn">I agree to receive 1 message per month</label>
-    </div>
-    <br />
-    <input type="button" [disabled]="responses.length === 0" class="btn btn-primary btn-lg" value="Submit" (click)="onSubmit()" />
+    <form>
+      <div class="form-group">
+        <input class="form-control" name="name" placeholder="Name" [(ngModel)]="name">
+      </div>
+      <br />
+      <div class="form-group">
+        <input class="form-control" name="email" placeholder="Email" [(ngModel)]="email">
+      </div>
+      <br />
+      <div class="form-group">
+        <input type="tel" class="form-control" name="phone" placeholder="Phone" [(ngModel)]="phone" tel minlength="10">
+        <span class="validity"></span>
+      </div>
+      <label class="offer">Enter phone number to receive 6 free wings!</label>
+      <br />
+      <label class="optin">Message and data rates may apply</label>
+      <div class="custom-control custom-checkbox optin">
+        <input type="checkbox" class="custom-control-input" id="optIn" />
+        <label class="custom-control-label" for="optIn">I agree to receive 1 message per month</label>
+      </div>
+      <br />
+      <div class="form-group">
+        <input type="button" class="btn btn-primary btn-lg btn-block" value="Submit" (click)="onSubmit()" />
+      </div>
+    </form>
     <h3>&nbsp;</h3>
   </div>
-  </div>
+</div>
+
+
 
