@@ -20,8 +20,6 @@ export class QuestionsService {
   constructor(private http: HttpClient) {
   }
 
-  //getQuestionsUrl = 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api/surveyquestions';
-  //postResponseUrl = 'http://sunobisurvey-env.ugwysmsubj.us-west-2.elasticbeanstalk.com/api/surveyresponses';
   getQuestionsUrl = environment.apiUrl + "/questions";
   postResponseUrl = environment.apiUrl + "/responses";
 

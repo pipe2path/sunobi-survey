@@ -79,9 +79,11 @@ export class HomeComponent {
   getEmail(value: string) {
     this.email = value;
   }
+
+  optIn = 0;
   
   onSubmit() {
-    var response = new Response(1, this.name, this.phone, this.email, this.responses);
+    var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
     this.questionsService.saveResponse(response).subscribe(
       data => response = data)
 

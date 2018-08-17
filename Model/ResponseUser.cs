@@ -16,5 +16,6 @@ namespace survey.Model
         public string userName { get; set; }
         public string userPhone { get; set; }
         public string userEmail { get; set; }
+        public bool optIn { get; set; }
     }
 }

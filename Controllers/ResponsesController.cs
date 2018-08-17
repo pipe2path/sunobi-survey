@@ -47,6 +47,7 @@ namespace survey.Controllers
                     user.userName = payload.userName;
                     user.userPhone = payload.userPhone;
                     user.userEmail = payload.userEmail;
+                    user.optIn = payload.optIn;
 
                     await _surveyResponseRepository.AddResponseUser(user);
 
@@ -62,7 +63,7 @@ namespace survey.Controllers
                         responseObj.questionId = rd.questionId;
                         responseObj.choiceId = rd.choiceId;
                         responseObj.userId = newUserId;
-
+                        
                         await _surveyResponseRepository.AddResponse(responseObj);
                     }
                 }
@@ -80,6 +81,7 @@ namespace survey.Controllers
         public string userName { get; set; }
         public string userPhone { get; set; }
         public string userEmail { get; set; }
+        public bool optIn { get; set; }
         public Response[] responseDetails { get;set;}
     }
 }
