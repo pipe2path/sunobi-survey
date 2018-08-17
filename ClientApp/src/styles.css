@@ -18,24 +18,9 @@
   font-weight: bold;
 }
 
-.input-group.is-invalid {
-  display: block;
-}
-input + span {
-  padding-right: 30px;
-}
-
-input:invalid + span:after {
+.alert-msg {
   position: absolute;
-  content: 'Please input valid phone number';
   padding-left: 5px;
   color: #8b0000;
 }
-
-/*input:valid + span:after {
-  position: absolute;
-  content: '✓';
-  padding-left: 5px;
-  color: #009000;
-}*/
 

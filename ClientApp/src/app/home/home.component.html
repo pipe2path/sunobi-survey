@@ -18,17 +18,31 @@
     <h4>Please enter your information</h4>
     <form>
       <div class="form-group">
-        <input class="form-control" name="name" placeholder="Name" [(ngModel)]="name">
+        <input class="form-control" id="name" name="name" placeholder="Name" minlength="4"
+               [(ngModel)]="name" #name1="ngModel">
       </div>
       <br />
       <div class="form-group">
-        <input class="form-control" name="email" placeholder="Email" [(ngModel)]="email">
+        <input class="form-control" id="email" name="email" placeholder="Email"
+               email type="email" [(ngModel)]="email" #eml="ngModel">
+
+        <div *ngIf="eml.invalid && (eml.dirty || eml.touched)"
+             class="alert-msg">
+          <div *ngIf="eml.errors.email">
+            Please input valid email.
+          </div>
+        </div>
       </div>
       <br />
       <div class="form-group">
-        <input type="tel" class="form-control" name="phone" placeholder="Phone" [(ngModel)]="phone" tel minlength="10">
-        <span class="validity"></span>
+        <input class="form-control" id="phone" name="phone" placeholder="Phone"
+               type="tel" [(ngModel)]="phone" #phn="ngModel" minlength="10">
+
+        <div *ngIf="phn.invalid && (phn.dirty || phn.touched)" class="alert-msg">
+          <div *ngIf="phn.errors.minlength">Please input valid phone number</div>
+        </div>
       </div>
+      <br />
       <label class="offer">Enter phone number to receive 6 free wings!</label>
       <br />
       <label class="optin">Message and data rates may apply</label>
