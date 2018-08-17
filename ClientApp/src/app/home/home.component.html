@@ -26,11 +26,8 @@
         <input class="form-control" id="email" name="email" placeholder="Email"
                email type="email" [(ngModel)]="email" #eml="ngModel">
 
-        <div *ngIf="eml.invalid && (eml.dirty || eml.touched)"
-             class="alert-msg">
-          <div *ngIf="eml.errors.email">
-            Please input valid email.
-          </div>
+        <div *ngIf="eml.invalid && (eml.dirty || eml.touched)" class="alert-msg">
+          <div *ngIf="eml.errors.email">Please input valid email</div>
         </div>
       </div>
       <br />
@@ -43,7 +40,7 @@
         </div>
       </div>
       <br />
-      <label class="offer">Enter phone number to receive 6 free wings!</label>
+      <label class="offer">Enter phone number for 6 FREE WINGS!</label>
       <br />
       <label class="optin">Message and data rates may apply</label>
       <div class="custom-control custom-checkbox optin">
@@ -55,7 +52,6 @@
         <input type="button" class="btn btn-primary btn-lg btn-block" value="Submit" (click)="onSubmit()" />
       </div>
     </form>
-    <h3>&nbsp;</h3>
   </div>
 </div>
 
