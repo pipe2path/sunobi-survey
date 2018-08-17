@@ -41,6 +41,9 @@ namespace survey
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            // enable CORS
+            services.AddCors();
+            
             services.AddTransient<IQuestionRepository, QuestionRepository>();
             services.AddTransient<IResponseRepository, ResponseRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
@@ -58,6 +61,8 @@ namespace survey
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
