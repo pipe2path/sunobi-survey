@@ -62,6 +62,7 @@ namespace survey
                 app.UseHsts();
             }
 
+            app.UseCors(options => options.WithOrigins("http://review.inamdo.com").AllowAnyMethod());
 
 
             app.UseHttpsRedirection();

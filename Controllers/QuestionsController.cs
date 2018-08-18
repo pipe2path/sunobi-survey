@@ -12,7 +12,7 @@ namespace survey.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
-    [EnableCors("AllowSpecificOrigin")]
+    //[EnableCors("AllowSpecificOrigin")]
     public class QuestionsController : Controller
     {
         public IQuestionRepository _questionsRepository;

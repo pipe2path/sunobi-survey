@@ -13,6 +13,7 @@ namespace survey.Controllers
 {
     [Produces("application/json")]
     [Route("api/[Controller]")]
+    //[EnableCors("AllowAllOrigins")]
     public class ResponsesController : Controller
     {
         public IResponseRepository _surveyResponseRepository;
