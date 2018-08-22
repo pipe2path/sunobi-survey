@@ -61,6 +61,20 @@ namespace survey.Data
             }
         }
 
+        public async Task AddCouponCode(CouponCode code)
+        {
+            try
+            {
+                await _context.CouponCodes.InsertOneAsync(code);
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+
     }
 
 

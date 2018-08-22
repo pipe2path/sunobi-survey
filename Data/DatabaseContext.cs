@@ -49,6 +49,13 @@ namespace survey.Data
                 return _database.GetCollection<ResponseUser>("responseUser");
             }
         }
+        public IMongoCollection<CouponCode> CouponCodes
+        {
+            get
+            {
+                return _database.GetCollection<CouponCode>("couponCode");
+            }
+        }
 
     }
 }

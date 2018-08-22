@@ -14,6 +14,7 @@ namespace survey.Interfaces
         // add new response document
         Task AddResponse(Response item);
         Task AddResponseUser(ResponseUser user);
+        Task AddCouponCode(CouponCode code);
 
         
     }

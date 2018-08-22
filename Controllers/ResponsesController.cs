@@ -17,10 +17,12 @@ namespace survey.Controllers
     public class ResponsesController : Controller
     {
         public IResponseRepository _surveyResponseRepository;
+        public ICouponCodeRepository _couponCodeRepository;
 
-        public ResponsesController(IResponseRepository surveyResponseRepository)
+        public ResponsesController(IResponseRepository surveyResponseRepository, ICouponCodeRepository couponCodeRepository)
         {
             _surveyResponseRepository = surveyResponseRepository;
+            _couponCodeRepository = couponCodeRepository;
         }
 
         [HttpGet]
@@ -67,12 +69,31 @@ namespace survey.Controllers
                         
                         await _surveyResponseRepository.AddResponse(responseObj);
                     }
+
+                    // generate random coupon code and insert into couponCode collection
+                    int randomNum = GenerateRandomNo();
+                    CouponCode coupon = new CouponCode();
+                    coupon.userId = newUserId;
+                    coupon.code = randomNum;
+                    coupon.dateGenerated = DateTime.Today.ToShortDateString();
+                    await _surveyResponseRepository.AddCouponCode(coupon);
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        private int GenerateRandomNo()
+        {
+            int _min = 1000;
+            int _max = 9999;
+            Random _rdm = new Random();
+            int rdmNum = _rdm.Next(_min, _max);
+            while (rdmNum == _couponCodeRepository.GetCouponCode(rdmNum))
+                rdmNum = _rdm.Next(_min, _max);
+            return rdmNum;
         }
     }
 
