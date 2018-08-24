@@ -63,8 +63,8 @@ namespace survey
                 app.UseHsts();
             }
 
-            //app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod());
-            app.UseCors(options => options.WithOrigins("http://review.inamdo.com").AllowAnyMethod());
+            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod());
+            //app.UseCors(options => options.WithOrigins("http://review.inamdo.com").AllowAnyMethod());
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -75,11 +75,6 @@ namespace survey
                 routes.MapRoute(
                     name: "default",
                     template: "api/{controller}/{action=Index}/{id?}");
-
-                //routes.MapRoute(
-                //    name: "couponlist",
-                //    template: "api/users/couponlist",
-                //    defaults: new { controller = "users", action = "couponlist" });
             });
 
             app.UseSpa(spa =>
@@ -98,12 +93,3 @@ namespace survey
         }
     }
 }
-
-//routes.MapRoute(
-//                    name: "default",
-//                    template: "api/{controller}/{action=Index}/{id?}");
-
-//routes.MapHttpRoute("DefaultApiWithId", "Api/{controller}/{id}", new { id = RouteParameter.Optional }, new { id = @"\d+" });
-//routes.MapHttpRoute("DefaultApiWithAction", "Api/{controller}/{action}");
-//routes.MapHttpRoute("DefaultApiGet", "Api/{controller}", new { action = "Get" }, new { httpMethod = new HttpMethodConstraint(HttpMethod.Get) });
-//routes.MapHttpRoute("DefaultApiPost", "Api/{controller}", new {action = "Post"}, new {httpMethod = new HttpMethodConstraint(HttpMethod.Post)});

@@ -59,5 +59,23 @@ namespace survey.Data
                 throw ex;
             }
         }
+
+        public async Task<bool> UpdateCouponCode(CouponCode item)
+        {
+            try
+            {
+                ReplaceOneResult actionResult
+                = await _context.CouponCodes
+                                .ReplaceOneAsync(c => c.InternalId.Equals(item.InternalId)
+                                        , item
+                                        , new UpdateOptions { IsUpsert = false });
+                return actionResult.IsAcknowledged
+                    && actionResult.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

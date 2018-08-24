@@ -75,7 +75,6 @@ namespace survey.Controllers
                     CouponCode coupon = new CouponCode();
                     coupon.userId = newUserId;
                     coupon.code = randomNum;
-                    coupon.dateGenerated = DateTime.Today.ToShortDateString();
                     await _surveyResponseRepository.AddCouponCode(coupon);
                 }
             }

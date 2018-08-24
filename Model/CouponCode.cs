@@ -15,6 +15,7 @@ namespace survey.Model
 
         public int code { get; set; }
         public ObjectId userId { get; set; }
+        public string message { get; set; }
         public string dateGenerated { get; set; }
         public string dateRedeemed { get; set; }
     }

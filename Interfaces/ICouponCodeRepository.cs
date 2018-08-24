@@ -13,6 +13,7 @@ namespace survey.Interfaces
 
         // add new coupon code document
         Task AddCouponCode(CouponCode item);
+        Task<bool> UpdateCouponCode(CouponCode item);
         
     }
 }
