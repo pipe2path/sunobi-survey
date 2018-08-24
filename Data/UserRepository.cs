@@ -30,5 +30,30 @@ namespace survey.Data
             }
         }
 
+        public async Task<IEnumerable<UserCoupon>> GetCouponList()
+        {
+            try
+            {
+                // get a join of responseUser and couponcode based on userid
+                IEnumerable<UserCoupon> userCoupons = (from c in _context.CouponCodes.AsQueryable()
+                                                       join u in _context.ResponseUsers.AsQueryable()
+                                                         on c.userId equals u.internalId
+                                                       where (u.optIn == true)
+                                                       select new UserCoupon
+                                                       {
+                                                           internalId = u.internalId,
+                                                           userName = u.userName,
+                                                           userPhone = u.userPhone,
+                                                           userEmail = u.userEmail,
+                                                           code = c.code
+                                                       }).ToList();
+                return userCoupons;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

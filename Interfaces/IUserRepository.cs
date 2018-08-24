@@ -9,5 +9,6 @@ namespace survey.Interfaces
     public interface IUserRepository
     {
         Task<IEnumerable<ResponseUser>> GetResponseUsers();
+        Task<IEnumerable<UserCoupon>> GetCouponList();
     }
 }

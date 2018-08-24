@@ -29,7 +29,7 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.getQuestionsMock();
+    this.getQuestionsWeb();
     this.name = '';
     this.phone = '';
     this.email = '';

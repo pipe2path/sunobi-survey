@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using survey.Interfaces;
 using survey.Model;
@@ -9,7 +10,6 @@ using survey.Model;
 namespace survey.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[Controller]")]
     public class UsersController : Controller
     {
         public IUserRepository _userRepository;
@@ -20,9 +20,16 @@ namespace survey.Controllers
         }
 
         [HttpGet]
+        [Route("api/users")]
         public async Task<IEnumerable<ResponseUser>> Get()
         {
             return await _userRepository.GetResponseUsers();
+        }
+
+        [Route("api/users/couponlist")]
+        public async Task<IEnumerable<UserCoupon>> GetCouponList()
+        {
+            return await _userRepository.GetCouponList();
         }
     }
 }
