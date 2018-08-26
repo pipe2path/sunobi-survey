@@ -38,7 +38,7 @@ namespace survey.Controllers
         //}
 
         [HttpPost]
-        public async Task Create([FromBody] JsonPayload payload)
+        public async Task Create([FromBody] ResponseJsonPayload payload)
         {
             try
             {
@@ -90,13 +90,13 @@ namespace survey.Controllers
             int _max = 9999;
             Random _rdm = new Random();
             int rdmNum = _rdm.Next(_min, _max);
-            while (rdmNum == _couponCodeRepository.GetCouponCode(rdmNum))
+            while (rdmNum == _couponCodeRepository.CreateCouponCode(rdmNum))
                 rdmNum = _rdm.Next(_min, _max);
             return rdmNum;
         }
     }
 
-    public class JsonPayload
+    public class ResponseJsonPayload
     {
         public int surveyId { get; set; }
         public string userName { get; set; }

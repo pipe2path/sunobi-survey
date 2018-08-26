@@ -9,11 +9,12 @@ namespace survey.Interfaces
     public interface ICouponCodeRepository
     {
         Task<IEnumerable<CouponCode>> GetCouponCodes();
-        int GetCouponCode(int code);
+        Task<CouponCode> GetCouponCodeByCode(int code);
+        int CreateCouponCode(int code);
 
         // add new coupon code document
         Task AddCouponCode(CouponCode item);
-        Task<bool> UpdateCouponCode(CouponCode item);
+        Task<bool> UpdateCoupon(CouponCode item);
         
     }
 }

@@ -30,7 +30,19 @@ namespace survey.Data
             }
         }
 
-        public int GetCouponCode(int code)
+        public async Task<CouponCode> GetCouponCodeByCode(int code)
+        {
+            try
+            {
+                return await _context.CouponCodes.Find(c => c.code == code).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int CreateCouponCode(int code)
         {
             try
             {
@@ -60,13 +72,13 @@ namespace survey.Data
             }
         }
 
-        public async Task<bool> UpdateCouponCode(CouponCode item)
+        public async Task<bool> UpdateCoupon(CouponCode item)
         {
             try
             {
                 ReplaceOneResult actionResult
                 = await _context.CouponCodes
-                                .ReplaceOneAsync(c => c.InternalId.Equals(item.InternalId)
+                                .ReplaceOneAsync(c => c.userId.Equals(item.userId)
                                         , item
                                         , new UpdateOptions { IsUpsert = false });
                 return actionResult.IsAcknowledged
