@@ -37,7 +37,7 @@ namespace survey.Controllers
             return await _userRepository.GetCouponList();
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/users/couponlist")]
         public async Task SaveCouponList([FromBody] IEnumerable<CouponJsonPayload> payload)
         {

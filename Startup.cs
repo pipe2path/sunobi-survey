@@ -63,9 +63,8 @@ namespace survey
                 app.UseHsts();
             }
 
-            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod());
-            //app.UseCors(options => options.WithOrigins("http://review.inamdo.com").AllowAnyMethod());
-
+            app.UseCors(options => options.WithOrigins("http://localhost:4200", "http://review.inamdo.com").AllowAnyMethod().AllowAnyHeader());
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
