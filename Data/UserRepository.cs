@@ -45,6 +45,7 @@ namespace survey.Data
                                                            userName = u.userName,
                                                            userPhone = u.userPhone,
                                                            userEmail = u.userEmail,
+                                                           message = c.message,
                                                            code = c.code
                                                        }).ToList();
                 return userCoupons;

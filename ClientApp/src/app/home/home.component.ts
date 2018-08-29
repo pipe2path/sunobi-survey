@@ -22,7 +22,7 @@ export class HomeComponent {
   //questions: Question[];  -- to be enabled when using mock questions
   public questions;
   error: any;
-  public responses: ResponseDetail[] = [];
+  public responses: ResponseDetail[];
   public imageSrc = '../assets/headerLogo2.png';
 
   constructor(private questionsService: QuestionsService) {
@@ -30,6 +30,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.getQuestionsWeb();
+    this.responses = [];
     this.name = '';
     this.phone = '';
     this.email = '';

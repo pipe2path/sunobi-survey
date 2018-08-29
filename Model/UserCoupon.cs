@@ -7,6 +7,7 @@ namespace survey.Model
 {
     public class UserCoupon : ResponseUser
     {
+        public string message { get; set; }
         public int code { get; set; }
 
         public UserCoupon() { }
@@ -16,6 +17,7 @@ namespace survey.Model
             this.userName = responseUser.userName;
             this.userPhone = responseUser.userPhone;
             this.userEmail = responseUser.userEmail;
+            this.message = "";
             this.code = 0;
         }
 
