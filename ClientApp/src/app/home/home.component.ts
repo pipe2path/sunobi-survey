@@ -34,6 +34,7 @@ export class HomeComponent {
     this.name = '';
     this.phone = '';
     this.email = '';
+    this.optIn = 0;
   }
 
   getQuestionsMock(): void {
