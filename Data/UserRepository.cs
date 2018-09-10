@@ -42,6 +42,7 @@ namespace survey.Data
                                                        select new UserCoupon
                                                        {
                                                            internalId = u.internalId,
+                                                           userId = c.userId,
                                                            userName = u.userName,
                                                            userPhone = u.userPhone,
                                                            userEmail = u.userEmail,

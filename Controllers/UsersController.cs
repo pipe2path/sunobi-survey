@@ -60,7 +60,8 @@ namespace survey.Controllers
     }
 
     public class CouponJsonPayload
-    {   [BsonId]
+    {
+        [BsonId]
         public string internalId { get; set; }
         public int surveyId { get; set; }
         public string userName { get; set; }

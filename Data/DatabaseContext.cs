@@ -35,6 +35,7 @@ namespace survey.Data
                 return _database.GetCollection<Question>("surveyQuestions");
             }
         }
+
         public IMongoCollection<Response> Responses
         {
             get
@@ -42,6 +43,7 @@ namespace survey.Data
                 return _database.GetCollection<Response>("surveyResponses");
             }
         }
+
         public IMongoCollection<ResponseUser> ResponseUsers
         {
             get
@@ -49,11 +51,20 @@ namespace survey.Data
                 return _database.GetCollection<ResponseUser>("responseUser");
             }
         }
+
         public IMongoCollection<CouponCode> CouponCodes
         {
             get
             {
                 return _database.GetCollection<CouponCode>("couponCode");
+            }
+        }
+
+        public IMongoCollection<Message> Messages
+        {
+            get
+            {
+                return _database.GetCollection<Message>("messageTracker");
             }
         }
 
