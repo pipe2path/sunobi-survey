@@ -30,6 +30,18 @@ namespace survey.Data
             }
         }
 
+        public async Task<IEnumerable<Message>> GetMessagesByUser(string id)
+        {
+            try
+            {
+                return await _context.Messages.Find(u => u.userId == id).SortByDescending(x => x.dateLastTextSent).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task SaveMessage(Message item)
         {
             try

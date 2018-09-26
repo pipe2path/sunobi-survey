@@ -29,27 +29,31 @@ namespace survey.Controllers
             return await _messageRepository.GetMessages();
         }
 
+        [HttpGet]
+        [Route("api/messages/user")]
+        public async Task<IEnumerable<Message>> Get(string id)
+        {
+            return await _messageRepository.GetMessagesByUser(id);
+        }
+
 
         [HttpPut]
         [Route("api/messages")]
-        public async Task SaveMessageSent([FromBody] IEnumerable<MessageJsonPayload> payload)
+        public async Task SaveMessageSent([FromBody] MessageJsonPayload payload)
         {
             try
             {
                 if (payload != null)
                 {
-                    foreach (var p in payload)
-                    {
-                        Message msg = new Message();
-                        msg.userId = p.userId;
-                        msg.userName = p.userName;
-                        msg.userPhone = p.userPhone;
-                        msg.userEmail = p.userEmail;
-                        msg.message = p.message;
-                        msg.code = p.code;
-                        msg.dateLastTextSent = DateTime.Now;
-                        await _messageRepository.SaveMessage(msg);
-                    }
+                    Message msg = new Message();
+                    msg.userId = payload.userId;
+                    msg.userName = payload.userName;
+                    msg.userPhone = payload.userPhone;
+                    msg.userEmail = payload.userEmail;
+                    msg.message = payload.message;
+                    msg.code = payload.code;
+                    msg.dateLastTextSent = DateTime.Now;
+                    await _messageRepository.SaveMessage(msg);
                 }
             }
             catch (Exception ex)

@@ -9,6 +9,7 @@ namespace survey.Interfaces
     public interface IMessageRepository
     {
         Task<IEnumerable<Message>> GetMessages();
+        Task<IEnumerable<Message>> GetMessagesByUser(string id);
         Task SaveMessage(Message item);
     }
 }
