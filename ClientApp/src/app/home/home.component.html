@@ -30,7 +30,7 @@
           <div *ngIf="eml.errors.email">Please input valid email</div>
         </div>
       </div>
-      <br />
+      <br /> 
       <div class="form-group">
         <input class="form-control" id="phone" name="phone" placeholder="Phone"
                type="tel" [(ngModel)]="phone" #phn="ngModel" minlength="10">
@@ -40,7 +40,7 @@
         </div>
       </div>
       <br />
-      <label class="offer">Enter phone number for 6 FREE WINGS!</label>
+      <label class="offer">Enter phone number for 5 FREE WINGS!</label>
       <br />
       <label class="optin">Message and data rates may apply</label>
       <div class="custom-control custom-checkbox optin">
@@ -49,7 +49,7 @@
       </div>
       <br />
       <div class="form-group">
-        <input type="button" [disabled]="responses.length==0" class="btn btn-primary btn-lg btn-block" value="Submit" (click)="onSubmit()" />
+        <input type="button" [disabled]="!submitBtnState()" class="btn btn-primary btn-lg btn-block" value="Submit" (click)="onSubmit()" />
       </div>
     </form>
   </div>

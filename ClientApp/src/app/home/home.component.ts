@@ -83,6 +83,14 @@ export class HomeComponent {
   }
 
   optIn = 0;
+
+  submitBtnState() {
+    var btnState = false;
+    if (this.optIn == 1 && this.responses.length > 0)
+      btnState = true;
+
+    return btnState;
+  }
   
   onSubmit() {
     var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
