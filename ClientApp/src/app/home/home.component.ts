@@ -86,7 +86,7 @@ export class HomeComponent {
 
   submitBtnState() {
     var btnState = false;
-    if (this.optIn == 1 && this.responses.length > 0)
+    if (this.optIn == 1 && this.responses.length > 0 && this.phone != '')
       btnState = true;
 
     return btnState;
