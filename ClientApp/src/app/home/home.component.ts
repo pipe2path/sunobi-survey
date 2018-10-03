@@ -4,6 +4,7 @@ import { Question } from './QuestionModel';
 import { ResponseDetail } from './ResponseDetail';
 import { Response } from './Response';
 import { HttpHeaders } from '@angular/common/http';
+import { TermsAndConditionsModal } from './termsAndConditions-modal';
 
 const httpOptions = {
   headers: new HttpHeaders({

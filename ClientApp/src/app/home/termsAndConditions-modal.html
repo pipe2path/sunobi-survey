@@ -1,0 +1,14 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Terms And Conditions</h4>
+  </div>
+  <div class="modal-body">
+    <p>{{termsAndConditions}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onClose()">Close</button>
+  </div>
+</ng-template>
+
+<!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>-->
+<a href="#" (click)="open(content)">Terms And Conditions</a>
