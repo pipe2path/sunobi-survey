@@ -8,8 +8,7 @@ import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-
 })
 export class TermsAndConditionsModal {
   closeResult: string;
-  //termsAndConditions: string;
-  modalRef;
+   modalRef;
 
   constructor(private modalService: NgbModal) { }
 
@@ -18,7 +17,7 @@ export class TermsAndConditionsModal {
     'be posted as a notification on our homepage http://winzza.com';
 
   open(content) {
-    this.modalRef = this.modalService.open(content, { centered: true });
+    this.modalRef = this.modalService.open(content, { centered: true, size: 'sm' });
     this.modalRef.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
