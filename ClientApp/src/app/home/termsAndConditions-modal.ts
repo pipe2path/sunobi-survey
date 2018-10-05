@@ -8,10 +8,14 @@ import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-
 })
 export class TermsAndConditionsModal {
   closeResult: string;
-  termsAndConditions: string;
+  //termsAndConditions: string;
   modalRef;
 
   constructor(private modalService: NgbModal) { }
+
+  termsAndConditions = 'As a condition to receive our offer, you agree to receive a text message on your phone number, not more than 4 times a month. Your name, email and phone number ' +
+    'will never be shared or sold to a third-party. Please call our store to opt out. This policy may be amended from time to time. Any amendments to our privacy policy will ' +
+    'be posted as a notification on our homepage http://winzza.com';
 
   open(content) {
     this.modalRef = this.modalService.open(content, { centered: true });
