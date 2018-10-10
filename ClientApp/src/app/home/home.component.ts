@@ -99,9 +99,9 @@ export class HomeComponent {
 
   showConfirmationModal = false;
   onSubmit() {
-    //var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
-    //this.questionsService.saveResponse(response).subscribe(
-    //  data => response = data)
+    var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
+    this.questionsService.saveResponse(response).subscribe(
+      data => response = data)
 
     // display confirmation modal
     this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
