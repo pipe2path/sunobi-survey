@@ -30,6 +30,19 @@ namespace survey.Data
             }
         }
 
+        public async Task<ResponseUser> GetResponseUserByPhone(string phone)
+        {
+            try
+            {
+                return await _context.ResponseUsers.Find(p => p.userPhone == phone).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public async Task<IEnumerable<UserCoupon>> GetCouponList()
         {
             var dateCutOff = DateTime.Today.AddDays(-15);

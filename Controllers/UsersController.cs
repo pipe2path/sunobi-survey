@@ -31,6 +31,13 @@ namespace survey.Controllers
         }
 
         [HttpGet]
+        [Route("api/users/{phone}")]
+        public async Task<ResponseUser> Get(string phone)
+        {
+            return await _userRepository.GetResponseUserByPhone(phone);
+        }
+
+        [HttpGet]
         [Route("api/users/couponlist")]
         public async Task<IEnumerable<UserCoupon>> GetCouponList()
         {

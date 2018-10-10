@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { QuestionsService } from './questions.service';
+import { UserService } from './user.service';
 import { Question } from './QuestionModel';
 import { ResponseDetail } from './ResponseDetail';
 import { Response } from './Response';
@@ -17,19 +18,20 @@ const httpOptions = {
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [QuestionsService]
+  providers: [QuestionsService, UserService]
 })
 
 export class HomeComponent {
   //questions: Question[];  -- to be enabled when using mock questions
   public questions;
+  public user;
   error: any;
   public responses: ResponseDetail[];
   public imageSrc = '../assets/headerLogo2.png';
   //@ViewChild('examplemodal')
   //private modalRef: ConfirmationModal;
 
-  constructor(private questionsService: QuestionsService, private modalService: NgbModal) {
+  constructor(private questionsService: QuestionsService, private userService: UserService, private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -97,8 +99,24 @@ export class HomeComponent {
     return btnState;
   }
 
+  getUserByPhone(phone: string): void {
+    this.userService.getUserByPhone(phone).subscribe(
+      data => { this.user = data },
+      err => console.error(err),
+      () => console.log('done loading user')
+    );
+  }
+
   showConfirmationModal = false;
   onSubmit() {
+
+    // validate if phone number has been used before
+    this.getUserByPhone(this.phone);
+    if (this.user != undefined) {
+      const modalRef = this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
+      modalRef.componentInstance.content = 'Sorry. Only 1 offer per phone number please';
+      return;
+    }
     var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
     this.questionsService.saveResponse(response).subscribe(
       data => response = data)
