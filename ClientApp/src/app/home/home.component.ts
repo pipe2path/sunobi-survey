@@ -104,7 +104,8 @@ export class HomeComponent {
       data => response = data)
 
     // display confirmation modal
-    this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
+    const modalRef = this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
+    modalRef.componentInstance.content = 'Thank you!';
     this.ngOnInit();
     
   }

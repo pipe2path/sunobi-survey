@@ -8,9 +8,7 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class ConfirmationModal implements OnInit {
-  modalRef;
-
-  confirmationContent = "Thank You!"
+  @Input() content;
   
   constructor(public activeModal: NgbActiveModal) {
   }
