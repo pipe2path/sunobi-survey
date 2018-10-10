@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { QuestionsService } from './questions.service';
 import { Question } from './QuestionModel';
 import { ResponseDetail } from './ResponseDetail';
 import { Response } from './Response';
 import { HttpHeaders } from '@angular/common/http';
-import { TermsAndConditionsModal } from './termsAndConditions-modal';
+import { ConfirmationModal } from './confirmation-modal';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -25,8 +26,10 @@ export class HomeComponent {
   error: any;
   public responses: ResponseDetail[];
   public imageSrc = '../assets/headerLogo2.png';
+  //@ViewChild('examplemodal')
+  //private modalRef: ConfirmationModal;
 
-  constructor(private questionsService: QuestionsService) {
+  constructor(private questionsService: QuestionsService, private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -36,6 +39,7 @@ export class HomeComponent {
     this.phone = '';
     this.email = '';
     this.optIn = 0;
+    //this.showConfirmationModal = false;
   }
 
   getQuestionsMock(): void {
@@ -92,13 +96,16 @@ export class HomeComponent {
 
     return btnState;
   }
-  
+
+  showConfirmationModal = false;
   onSubmit() {
-    var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
-    this.questionsService.saveResponse(response).subscribe(
-      data => response = data)
+    //var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
+    //this.questionsService.saveResponse(response).subscribe(
+    //  data => response = data)
 
+    // display confirmation modal
+    this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
     this.ngOnInit();
+    
   }
-
 }

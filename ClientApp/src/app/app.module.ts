@@ -9,8 +9,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TermsAndConditionsModal } from './home/termsAndConditions-modal';
+import { ConfirmationModal } from './home/confirmation-modal';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { TermsAndConditionsModal } from './home/termsAndConditions-modal';
     CounterComponent,
     FetchDataComponent,
     TermsAndConditionsModal,
+    ConfirmationModal,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,7 +34,8 @@ import { TermsAndConditionsModal } from './home/termsAndConditions-modal';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  entryComponents: [ConfirmationModal],
+  providers: [NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

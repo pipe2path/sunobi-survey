@@ -31,11 +31,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\home\confirmation-modal.ts" />
     <None Remove="ClientApp\src\app\home\ResponseModel.ts" />
     <None Remove="ClientApp\src\environments\environment.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\home\confirmation-modal.ts" />
     <TypeScriptCompile Include="ClientApp\src\environments\environment.ts" />
   </ItemGroup>
 
