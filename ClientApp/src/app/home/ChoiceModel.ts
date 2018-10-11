@@ -4,7 +4,7 @@ export class ChoiceModel {
 
   constructor(id, desc) {
     this.id = id;
-    this.desc = id;
+    this.desc = desc;
   }
     
 }
