@@ -1,8 +1,8 @@
 export class UserModel {
-  private userId: string;
-  private userName: string;
-  private userPhone: string;
-  private userEmail: string;
+  public userId: string;
+  public userName: string;
+  public userPhone: string;
+  public userEmail: string;
 
   constructor(userId, userName, userPhone, userEmail) {
     this.userId = userId;

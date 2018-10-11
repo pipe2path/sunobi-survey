@@ -1,5 +1,10 @@
 <div class="modal-body">
-  <h4 class="modal-title offer">{{content}}</h4>
+  <div *ngIf="type=='info'">
+    <h4 class="modal-title info">{{content}}</h4>
+  </div>
+  <div *ngIf="type=='error'">
+    <h4 class="modal-title error">{{content}}</h4>
+  </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close clicked')">Close</button>

@@ -7,6 +7,7 @@ import { Response } from './Response';
 import { HttpHeaders } from '@angular/common/http';
 import { ConfirmationModal } from './confirmation-modal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserModel } from './UserModel';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -57,8 +58,6 @@ export class HomeComponent {
     );
   }
 
-  //sourceGroup = ["Yelp Search", "Our Flyer", "From a colleague", "Online banner"];  
-
   addResponse(surveyId, questionId, choiceId): void {
     for (var i = 0; i < this.responses.length; i++) {
         if (this.responses[i].questionId == questionId) {
@@ -80,9 +79,9 @@ export class HomeComponent {
   }
 
   phone = '';
-  getPhone(value: string) {
-    this.phone = value;
-  }
+  //getPhone(value: string) {
+  //  this.phone = value;
+  //}
 
   email = '';
   getEmail(value: string) {
@@ -99,32 +98,32 @@ export class HomeComponent {
     return btnState;
   }
 
-  getUserByPhone(phone: string): void {
-    this.userService.getUserByPhone(phone).subscribe(
-      data => { this.user = data },
-      err => console.error(err),
-      () => console.log('done loading user')
-    );
+  getUserByPhone(phone: string): any {
+    return this.userService.getUserByPhone(phone).toPromise().then(data => { return data; })
   }
 
-  showConfirmationModal = false;
-  onSubmit() {
+  async onSubmit() {
 
-    // validate if phone number has been used before
-    this.getUserByPhone(this.phone);
-    if (this.user != undefined) {
+    let user = <UserModel>await this.getUserByPhone(this.phone);
+
+    // if user is null that means the phone number has not been found, so go ahead and save response. if user is not null, display modal
+    if (user == null) {
+
+      var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
+      this.questionsService.saveResponse(response).subscribe(
+        data => response = data)
+
+      // display confirmation modal
       const modalRef = this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
-      modalRef.componentInstance.content = 'Sorry. Only 1 offer per phone number please';
-      return;
+      modalRef.componentInstance.content = 'Thank you!';
+      modalRef.componentInstance.type = 'info';
+      this.ngOnInit();
     }
-    var response = new Response(1, this.name, this.phone, this.email, this.optIn, this.responses);
-    this.questionsService.saveResponse(response).subscribe(
-      data => response = data)
-
-    // display confirmation modal
-    const modalRef = this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
-    modalRef.componentInstance.content = 'Thank you!';
-    this.ngOnInit();
-    
+    else {
+      const modalRef = this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
+      modalRef.componentInstance.content = 'Sorry, this offer is available only one time per phone number';
+      modalRef.componentInstance.type = 'error';
+      this.ngOnInit();
+    }
   }
 }
