@@ -5,7 +5,7 @@ import { Question } from './QuestionModel';
 import { ResponseDetail } from './ResponseDetail';
 import { Response } from './Response';
 import { HttpHeaders } from '@angular/common/http';
-import { ConfirmationModal } from './confirmation-modal';
+import { ModalDialog } from './modal-dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserModel } from './UserModel';
 
@@ -29,9 +29,7 @@ export class HomeComponent {
   error: any;
   public responses: ResponseDetail[];
   public imageSrc = '../assets/headerLogo2.png';
-  //@ViewChild('examplemodal')
-  //private modalRef: ConfirmationModal;
-
+ 
   constructor(private questionsService: QuestionsService, private userService: UserService, private modalService: NgbModal) {
   }
 
@@ -42,7 +40,6 @@ export class HomeComponent {
     this.phone = '';
     this.email = '';
     this.optIn = 0;
-    //this.showConfirmationModal = false;
   }
 
   getQuestionsMock(): void {
@@ -114,13 +111,13 @@ export class HomeComponent {
         data => response = data)
 
       // display confirmation modal
-      const modalRef = this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
+      const modalRef = this.modalService.open(ModalDialog, { centered: true, size: 'sm' });
       modalRef.componentInstance.content = 'Thank you!';
       modalRef.componentInstance.type = 'info';
       this.ngOnInit();
     }
     else {
-      const modalRef = this.modalService.open(ConfirmationModal, { centered: true, size: 'sm' });
+      const modalRef = this.modalService.open(ModalDialog, { centered: true, size: 'sm' });
       modalRef.componentInstance.content = 'Sorry, this offer is available only one time per phone number';
       modalRef.componentInstance.type = 'error';
       this.ngOnInit();

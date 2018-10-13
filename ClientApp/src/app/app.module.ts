@@ -11,7 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TermsAndConditionsModal } from './home/termsAndConditions-modal';
-import { ConfirmationModal } from './home/confirmation-modal';
+import { ModalDialog } from './home/modal-dialog';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { ConfirmationModal } from './home/confirmation-modal';
     CounterComponent,
     FetchDataComponent,
     TermsAndConditionsModal,
-    ConfirmationModal,
+    ModalDialog,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +35,7 @@ import { ConfirmationModal } from './home/confirmation-modal';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  entryComponents: [ConfirmationModal],
+  entryComponents: [ModalDialog],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]
 })
