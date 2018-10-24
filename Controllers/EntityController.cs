@@ -26,6 +26,13 @@ namespace survey.Controllers
             return await _entityRepository.GetEntities();
         }
 
+        [HttpGet]
+        [Route("api/entity/{id}")]
+        public async Task<Entity> Get(string id)
+        {
+            return await _entityRepository.GetEntity(id);
+        }
+
         [HttpPut]
         [Route("api/entity")]
         public async Task UpdateEntity([FromBody] EntityJsonPayload payload)
