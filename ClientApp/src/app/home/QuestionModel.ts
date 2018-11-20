@@ -16,7 +16,8 @@ export class Question {
     this.questionDesc = questionDesc;
     this.questionType = questionType;
     this.choices = choices;
-    this.activeChoice = -1;
+    this.activeChoice = -1
+;
   }
 
 }
