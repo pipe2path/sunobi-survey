@@ -16,7 +16,7 @@ namespace survey.Model
         //public string responseId { get; set; }
         public int surveyId { get; set; }
         public int questionId { get; set; }
-        public int choiceId { get; set; }
+        public string choice { get; set; }
 
         public ObjectId userId { get; set; }
     }

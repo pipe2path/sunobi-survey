@@ -64,7 +64,7 @@ namespace survey.Controllers
                         Response responseObj = new Response();
                         responseObj.surveyId = rd.surveyId;
                         responseObj.questionId = rd.questionId;
-                        responseObj.choiceId = rd.choiceId;
+                        responseObj.choice = rd.choice;
                         responseObj.userId = newUserId;
                         
                         await _surveyResponseRepository.AddResponse(responseObj);
