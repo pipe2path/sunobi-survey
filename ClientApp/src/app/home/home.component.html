@@ -6,7 +6,7 @@
   <div *ngFor="let q of questions; let i = index;">
     <h5>{{ q.questionDesc }}</h5>
     <ul class="list-group">
-      <li class="list-group-item list-group-item-action" [class.active]="questions[i].activeChoice === j" (click)="onClick(i,c)" *ngFor="let c of q.choices; let j = index" >
+      <li class="list-group-item list-group-item-action" [class.active]="questions[i].activeChoice === j" (click)="onClick(i,j,c)" *ngFor="let c of q.choices; let j = index" >
         {{ c }}
         <i class="fa fa-chevron-right"></i>
       </li>

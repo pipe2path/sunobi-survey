@@ -65,9 +65,9 @@ export class HomeComponent {
   }
   
   active: number;
-  onClick(questionIndex: number, choice: string) {
+  onClick(questionIndex: number, choiceIndex: number, choice: string) {
     this.addResponse(1, questionIndex, choice);        // entityId is hard coded, need to change later
-    this.questions[questionIndex].activeChoice = choice;
+    this.questions[questionIndex].activeChoice = choiceIndex;
   }
 
   name = '';

@@ -1,11 +1,11 @@
 export class ResponseDetail {
   public surveyId: number;
   public questionId: number;
-  private choiceId: number;
+  private choice: string;
 
-  constructor(surveyId, questionId, choiceId) {
+  constructor(surveyId, questionId, choice) {
     this.surveyId = surveyId;
     this.questionId = questionId;
-    this.choiceId = choiceId;
+    this.choice = choice;
   }
 }
