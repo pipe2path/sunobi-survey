@@ -49,6 +49,7 @@ namespace survey
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ICouponCodeRepository, CouponCodeRepository>();
             services.AddTransient<IMessageRepository, MessageRepository>();
+            services.AddTransient<IEntityRepository, EntityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +65,7 @@ namespace survey
                 app.UseHsts();
             }
 
-            app.UseCors(options => options.WithOrigins("http://localhost:4200", "http://review.inamdo.com", "http://message.inamdo.com").AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(options => options.WithOrigins("http://localhost:4200", "http://review.inamdo.com", "http://message.inamdo.com", "http://localhost:63211").AllowAnyMethod().AllowAnyHeader());
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();

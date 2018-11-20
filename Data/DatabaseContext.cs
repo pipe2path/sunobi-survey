@@ -28,6 +28,14 @@ namespace survey.Data
                 _database = client.GetDatabase(settings.Value.Database);
         }
 
+        public IMongoCollection<Entity> Entities
+        {
+            get
+            {
+                return _database.GetCollection<Entity>("entity");
+            }
+        }
+
         public IMongoCollection<Question> Questions
         {
             get
